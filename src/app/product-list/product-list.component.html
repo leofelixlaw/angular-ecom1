@@ -1,0 +1,59 @@
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="card product-list">
+        <h5 class="card-header text-white bg-dark">{{pageTitle}}</h5>
+        <div class="card-body">
+          <div class="form-group row">
+            <label for="filterSearch" class="col-sm-2 col-form-label">Filter:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="filterSearch" placeholder="Search Product" [(ngModel)]='listFilter'>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">
+                        <a class="btn btn-primary btn-sm" (click)='toggleImage()'>Show Image</a>
+                      </th>
+                      <th scope="col">Product</th>
+                      <th scope="col">Code</th>
+                      <th scope="col">Available</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Star Rating</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor='let product of filteredProducts'>
+                      <td>
+                        <img *ngIf='showImage'
+                            [src]='product.imageUrl'
+                            [alt]='product.productName'
+                            [style.width.px]='imageWidth'
+                            [style.margin.px]='imageMargin'>
+                      </td>
+                      <td>
+                          <a [routerLink]="['/products', product.productId]">
+                            {{ product.productName }}
+                        </a>
+
+                      </td>
+                      <td>{{ product.productCode | lowercase | convert2spces:'-' }}</td>
+                      <td>{{ product.releaseDate }}</td>
+                      <td>{{ product.price | currency:'INR'}}</td>
+                      <td><app-star [rating]='product.starRating'></app-star></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</main>

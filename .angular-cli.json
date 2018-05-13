@@ -60,6 +60,17 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {}
+    "class": {
+      "spec": false
+    },
+    "component": {
+      "spec": false
+    },
+    "pipe": {
+      "spec": false
+    },
+    "service": {
+      "spec": false
+    }
   }
 }

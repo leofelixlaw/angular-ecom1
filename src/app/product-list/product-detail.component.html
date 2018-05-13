@@ -1,0 +1,57 @@
+<main>
+  <div class="jumbotron">
+    <div class="container" *ngIf='product'> 
+
+        <div class="card">
+            <div class="card-header">
+               <strong>Page Title:</strong> {{ product.productName }}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">                
+                {{ product.productName }}
+              </h5>
+              <div class="card-text">
+                <div class='row'>
+                    <div class='col-md-6'>
+                        <div class='row'>
+                            <div class='col-md-3'>Code:</div>
+                            <div class='col-md-6'>{{product.productCode}}</div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-3'>Description:</div>
+                            <div class='col-md-6'>{{product.description}}</div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-3'>Availability:</div>
+                            <div class='col-md-6'>{{product.releaseDate}}</div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-3'>Price:</div>
+                            <div class='col-md-6'>{{ product.price | currency:'INR'}}</div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-3'>Rating:</div>
+                            <div class='col-md-6'>
+                                <app-star [rating]='product.starRating'></app-star>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class='col-md-6'>
+                        <img class='center-block img-responsive' 
+                              [style.width.px]='200' 
+                              [style.margin.px]='2' 
+                              [src]='product.imageUrl'
+                              [title]='product.productName'>
+                    </div>
+                </div>
+              </div>
+              <br/>
+              <a class='btn btn-info' (click)="onBack()">
+                  <i class='glyphicon glyphicon-chevron-left'></i> Back
+              </a>
+            </div>
+          </div>
+    </div>
+  </div>
+</main>
